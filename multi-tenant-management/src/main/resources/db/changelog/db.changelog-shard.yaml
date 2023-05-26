@@ -1,3 +1,25 @@
 databaseChangeLog:
-  - include:
-      file: db/changelog/db.changelog-shard-1.0.yaml
+  - changeSet:
+      id: 1
+      author: sergiogq
+      labels: start-up
+      changes:
+        - tagDatabase:
+            tag: v1.0.0
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: scripts/1.0.0/shard_1_0_0_0.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true
+      rollback:
+        - sqlFile:
+            dbms: postgresql
+            encoding: utf8
+            endDelimiter: \n/\s*\n|\n/\s*$
+            path: scripts/1.0.0/shard_1_0_0_0_rollback.sql
+            relativeToChangelogFile: true
+            splitStatements: true
+            stripComments: true

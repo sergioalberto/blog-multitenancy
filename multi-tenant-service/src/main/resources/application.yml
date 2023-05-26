@@ -9,12 +9,13 @@ spring:
     hibernate:
       ddl-auto: none
     open-in-view: false
+
 multitenancy:
   master:
-    database: master
+    database: mensis_business
     datasource:
-      url: jdbc:postgresql://localhost:5432/master
-      username: postgres
+      url: jdbc:postgresql://localhost:5432/mensis_business
+      username: root
       password: secret
       hikari:
         maximum-pool-size: 1
@@ -25,7 +26,7 @@ multitenancy:
     liquibase:
       enabled: false
   shard:
-    username: app_user
+    username: root
     password: secret
     datasource:
       url-prefix: jdbc:postgresql://localhost:5432/
